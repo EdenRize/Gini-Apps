@@ -1,7 +1,7 @@
 <script>
   import InputFieldsList from './InputFieldsList.svelte'
 
-  export let formTitle = 'Form'
+  export let formTitle
 
   const userInfo = {
     username: '',
@@ -70,8 +70,7 @@
       placeholder: 'Enter your password',
       type: 'password',
       regex: /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?\/\\-]+$/,
-      errorMsg:
-        'Password must ccontain letters, numbers and special characters',
+      errorMsg: 'Password must contain letters, numbers and special characters',
       isRequired: true,
     },
   ]
@@ -123,7 +122,9 @@
 </script>
 
 <div class="form-container">
-  <h1>{formTitle}</h1>
+  {#if formTitle}
+    <h1>{formTitle}</h1>
+  {/if}
 
   <form on:submit|preventDefault={handleSubmit}>
     <InputFieldsList {fields} {onInputChange} />
@@ -131,9 +132,7 @@
     <button type="submit">Submit</button>
   </form>
 
-  {#if formError}
-    <p class="error">{formError}</p>
-  {/if}
+  <p class="error">{formError}</p>
 </div>
 
 <style>
@@ -157,9 +156,9 @@
   }
 
   .error {
-    position: absolute;
+    min-height: 100px;
     color: red;
-    top: 330px;
+    text-align: center;
   }
 
   button {
