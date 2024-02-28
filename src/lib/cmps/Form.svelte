@@ -1,6 +1,8 @@
 <script>
   import InputFieldsList from './InputFieldsList.svelte'
 
+  export let formTitle = 'Form'
+
   const userInfo = {
     username: '',
     lastName: '',
@@ -121,6 +123,8 @@
 </script>
 
 <div class="form-container">
+  <h1>{formTitle}</h1>
+
   <form on:submit|preventDefault={handleSubmit}>
     <InputFieldsList {fields} {onInputChange} />
 
@@ -138,6 +142,11 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3rem;
+    font-family: 'Courier New', Courier, monospace;
   }
 
   form {
@@ -145,8 +154,6 @@
     flex-direction: column;
     align-items: center;
     width: 400px;
-    font-size: 1.5rem;
-    font-family: 'Courier New', Courier, monospace;
   }
 
   .error {

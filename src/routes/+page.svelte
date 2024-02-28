@@ -2,4 +2,4 @@
   import Form from '../lib/cmps/Form.svelte'
 </script>
 
-<Form />
+<Form formTitle="Eden's Form" />
